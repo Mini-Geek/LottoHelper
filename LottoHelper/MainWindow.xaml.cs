@@ -1,18 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LottoHelper
 {
@@ -150,6 +142,8 @@ namespace LottoHelper
             if (split.Length != 6)
                 return null;
             var resp = new NumberSet();
+            int last = 0;
+            int max = gameType == GameType.MegaMillions ? 75 : 54;
             foreach (var num in gameType == GameType.MegaMillions ? split.Take(5) : split)
             {
                 int i;
@@ -157,6 +151,17 @@ namespace LottoHelper
                     resp.Numbers.Add(i);
                 else
                     return null;
+                if (i <= last)
+                {
+                    Debug.WriteLine("Line out of order");
+                    return null;
+                }
+                if (i > max)
+                {
+                    Debug.WriteLine("Line over max");
+                    return null;
+                }
+                last = i;
             }
             if (gameType == GameType.MegaMillions)
             {
