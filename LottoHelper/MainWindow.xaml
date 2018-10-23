@@ -1,7 +1,7 @@
 ﻿<Window x:Class="LottoHelper.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Lotto Helper" Height="350" Width="525">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -10,14 +10,14 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" Margin="10">
             <TextBlock Text="Winning numbers: " />
-            <TextBox Name="tbWinningNumbers" Width="200" TextChanged="tbWinningNumbers_TextChanged" />
-            <RadioButton Name="RadioButton51" GroupName="GameType" Content="5+1" Checked="RadioButton51_Click"/>
-            <RadioButton Name="RadioButton6" GroupName="GameType" Content="6" Checked="RadioButton6_Click"/>
+            <TextBox Name="tbWinningNumbers" Width="200" TextChanged="AnyTextChanged" />
+            <RadioButton Name="RadioButton51" GroupName="GameType" Content="Mega Millions" Checked="RadioButton51_Click"/>
+            <RadioButton Name="RadioButton6" GroupName="GameType" Content="Texas Lottery" Checked="RadioButton6_Click"/>
         </StackPanel>
         <TextBlock Text="Entries:" Grid.Row="1" />
-        <TextBox Name="tbEntries" Grid.Row="2" TextChanged="tbEntries_TextChanged" AcceptsReturn="True" />
+        <TextBox Name="tbEntries" Grid.Row="2" TextChanged="AnyTextChanged" AcceptsReturn="True" />
         <TextBlock Name="tbWinners" Grid.Row="4" />
     </Grid>
 </Window>
